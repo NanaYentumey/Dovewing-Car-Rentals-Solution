@@ -102,8 +102,9 @@ Records have public constructors, so anyone can build
 `new Renter(1, "Kofi Mensah", RenterType.MEMBER)` to try for a waived deposit, or
 a copy of the Vitz with a daily rate of zero. `Depot` therefore checks that what
 it is handed is in its own list (`vehicles.contains(vehicle)`). For records,
-`contains` compares every field, so anything that differs is refused. Renter ids are issued by the depot (`registerRenter`), not chosen
-by the caller, and replace the original's global `static` counters.
+`contains` compares every field, so anything that differs is refused. Renter ids
+are issued by the depot (`registerRenter`), not chosen by the caller, and replace
+the original's global `static` counters.
 
 ### 5. Rules and printing are separated
 
@@ -153,7 +154,8 @@ In the original, the same change meant editing `Depot.rent`, the one method
 every rental passes through: adding a third `else if` branch, copying the cost,
 waiver, status and print lines a third time, and remembering the new `"VAN"`
 string everywhere a category is compared. Any slip there affects economy and
-premium too, which is how the earlier premium tweak broke economy returns.
+premium too. The brief describes that kind of accident: a tweak to premium
+pricing that broke how economy returns were handled.
 
 If the van rule turns out to depend on something else (for example the number of
 days), `depositFor` gains a parameter. That is still a change in one small
@@ -241,16 +243,17 @@ create a state the business could not recognise or reopen the status rule:
   price combinations, the ledger, encapsulation (lists cannot be modified,
   forged renters and vehicles are refused) and input validation.
 
-**Why this, for this business.** The owner's own story is that a tweak to
-premium pricing once broke economy returns, and nobody noticed until it hurt.
-The staff answer to that was a paper backup. Restructuring makes that kind of
-break less likely; only tests make it *noticed*, within seconds, by whoever
+**Why this, for this business.** The brief says a tweak to premium pricing once
+broke how economy returns were handled, and that the staff now keep a paper
+backup because they do not trust the tool. Restructuring makes that kind of
+break less likely; tests are what make it *noticed*, within seconds, by whoever
 makes the next change. When the commercial-van class is added next quarter, the
 person adding it runs one command and knows economy and premium still charge
-what they did before. That is what lets the depot retire the paper backup, and
-it is why I chose it over a visible new feature: a new feature would have
-changed what the tool does, which this lab forbids, and would not have addressed
-the reason the tool is distrusted.
+what they did before. A tool that can show it still works after each change is
+one the staff have a reason to trust again. That is why I chose this over a
+visible new feature: a new feature would have changed what the tool does, which
+this lab forbids, and would not have addressed the reason the tool is
+distrusted.
 
 The original could not have been tested this way, because its rules and its
 printing were the same lines of code.
