@@ -1,5 +1,7 @@
 # Dovewing Car Rentals: Fleet and Rental Tracker
 
+[![CI](https://github.com/NanaYentumey/Dovewing-Car-Rentals-Solution/actions/workflows/ci.yml/badge.svg)](https://github.com/NanaYentumey/Dovewing-Car-Rentals-Solution/actions/workflows/ci.yml)
+
 A small program the Dovewing depot uses to track its fleet and its rentals. This is the rebuilt version of the single-file starter: the same features and the same output, reorganised so that a vehicle is always either available or rented, never both, and so that a new vehicle class can be added without a rewrite.
 
 - [DIAGNOSIS.md](DIAGNOSIS.md): what was wrong with the starter, ranked by risk, and the design sketch drawn before the rebuild ([docs/design-sketch.jpg](docs/design-sketch.jpg)).
@@ -145,7 +147,7 @@ The starter's console output was captured before any change and is kept verbatim
 -  Rental #3: GT-1234-20 -> Ama Owusu (2 days)
 ```
 
-This comparison is automated. [RentalTrackerTest.java](src/test/java/com/dovewing/rentals/RentalTrackerTest.java) reads `original-output.txt`, applies exactly these two differences, and asserts that the demo day prints the result line for line. It runs whenever the tests run (`mvn test`, or any later Maven phase such as `mvn package`). It does not run on `mvn compile`.
+This comparison is automated. [RentalTrackerTest.java](src/test/java/com/dovewing/rentals/RentalTrackerTest.java) reads `original-output.txt`, applies exactly these two differences, and asserts that the demo day prints the result line for line. It runs whenever the tests run (`mvn test`, or any later Maven phase such as `mvn package`). It does not run on `mvn compile`. GitHub also runs it on every push: see "Automated checks" below.
 
 Things deliberately kept as they were, even where I would question them:
 
@@ -171,6 +173,8 @@ Inputs the original accepted and the rebuild refuses. Each one would otherwise c
 
 - [RentalTrackerTest.java](src/test/java/com/dovewing/rentals/RentalTrackerTest.java) (1 test) compares the whole demo day with the original's recorded output.
 - [DepotTest.java](src/test/java/com/dovewing/rentals/domain/DepotTest.java) (20 tests) covers the status rule, the price for each of the two vehicle classes with each of the two renter types, the rentals list, encapsulation (lists cannot be modified, forged renters and vehicles are refused) and input validation.
+
+**Automated checks.** GitHub Actions runs `mvn verify` on JDK 21 on every push to `main` ([.github/workflows/ci.yml](.github/workflows/ci.yml)). The badge at the top of this README shows the result of the latest run and links to its log, so the test count and the output comparison can be checked without cloning the repository.
 
 The summary printed by `mvn test`:
 
