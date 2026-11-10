@@ -23,7 +23,8 @@ Active rentals:
 ```
 
 The last two lines are the problem in one picture: **one Vitz, two active
-rentals**. Ama has been charged GHS 300 for a car that is already out with Kofi.
+rentals**. The tracker has recorded a second rental, costing GHS 300, for a car
+that is already out with Kofi.
 
 ## Defects, ranked by risk to this business
 
@@ -40,13 +41,12 @@ Nothing ties the two together, so they are free to disagree. The double-rental
 is just the easiest way to make them disagree; there are others (see 2 and 3).
 
 **Risk.** This is the one failure the owner named: a car that is "available and
-rented at the same time". For a rental depot it is the worst kind of error,
-because it only shows up when a paying customer is standing at the desk and the
-car is not in the yard. The depot has taken a payment it must refund, lost the
-customer's trust, and the staff respond by keeping a paper backup, which means
-the tool is no longer the record of truth. Every other number it prints is then
-suspect too. That is why it is ranked first: it destroys the reason the tool
-exists.
+rented at the same time". For a rental depot it is the worst kind of error: a
+second customer can be promised, and billed for, a car that is not in the yard.
+The brief says the staff already keep a paper backup alongside the tool, which
+means the tool is no longer the record of truth. If the fleet status cannot be
+believed, every other number it prints is suspect too. That is why it is ranked
+first: it defeats the reason the tool exists.
 
 ### 2. Any code can overwrite any state
 
@@ -102,9 +102,9 @@ printing all tangled together.
 **Root cause.** The rule for a class of vehicle has no home of its own; it is
 inlined into one long method and duplicated per class.
 
-**Risk.** This is the exact shape of the incident the owner described, where a
-tweak to premium pricing broke economy. Change one copy and forget the other and
-the two classes drift apart. The commercial-van class coming next quarter would
+**Risk.** The brief describes an incident of this kind, where a tweak to premium
+pricing broke how economy returns were handled. With the rule duplicated, a
+change to one copy that misses the other makes the two classes drift apart. The commercial-van class coming next quarter would
 be a third copy, and whoever adds it has to edit the one method that every
 rental goes through.
 
@@ -129,8 +129,8 @@ vehicles and renters the depot has never seen; such a rental appears under
 
 **Root cause.** The depot does not check that what it is handed belongs to it.
 
-**Risk.** The screen confirms things that did not happen, which feeds the
-distrust behind the paper backup.
+**Risk.** The screen confirms things that did not happen, which is one more
+reason for staff not to trust it.
 
 ### 8. Maintainability problems that make the above hard to fix
 
@@ -151,8 +151,8 @@ it":
 ### Why defect 1 is the most dangerous for *this* business
 
 A pharmacy's worst error is dispensing the wrong thing; a rental depot's worst
-error is promising the same car twice. Dovewing's stock is a handful of
-high-value vehicles, each of which can be in exactly one place. Defects 3 and 4
+error is promising the same car twice. Dovewing is a small depot, and each of
+its vehicles can be in exactly one place. Defects 3 and 4
 lose money on one rental; defect 1 makes the whole fleet picture untrustworthy,
 and it is the one the owner has explicitly said must never happen. Defect 2 is
 ranked second because it is what makes defect 1 unfixable until it is closed.
