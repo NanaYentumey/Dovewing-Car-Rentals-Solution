@@ -161,6 +161,10 @@ method, not in `Depot.rent`.
 
 ### What changed from the sketch
 
+This is the sketch drawn before the rebuild, from [DIAGNOSIS.md](DIAGNOSIS.md):
+
+![Design sketch: planned classes and how they relate](docs/design-sketch.jpg)
+
 The overall structure in [DIAGNOSIS.md](DIAGNOSIS.md) held. While building I
 made it simpler in four places and added two things:
 
