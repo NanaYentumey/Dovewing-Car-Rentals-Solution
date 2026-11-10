@@ -1,0 +1,12 @@
+Rented Toyota Vitz (GT-1234-20) to Kofi Mensah for 3 days, cost GHS 450.0, deposit GHS 500.0
+Rented Toyota Prado (GR-5678-22) to Ama Owusu for 2 days, cost GHS 1200.0, deposit GHS 0.0
+Returned Toyota Prado (GR-5678-22)
+Rented Toyota Vitz (GT-1234-20) to Ama Owusu for 2 days, cost GHS 300.0, deposit GHS 0.0
+
+=== Dovewing Car Rentals - end of day ===
+Fleet status:
+  Toyota Vitz (GT-1234-20, ECONOMY): RENTED
+  Toyota Prado (GR-5678-22, PREMIUM): AVAILABLE
+Active rentals:
+  Rental #1: GT-1234-20 -> Kofi Mensah (3 days)
+  Rental #3: GT-1234-20 -> Ama Owusu (2 days)
